@@ -80,6 +80,36 @@ export default function AdminModal() {
     setTimeout(() => setSavedNotification(false), 2500);
   };
 
+  // Revert draft edits back to current siteData
+  const handleDiscardChanges = () => {
+    if (window.confirm('Discard unsaved draft edits and reload saved website settings?')) {
+      setDraftData(JSON.parse(JSON.stringify(siteData)));
+    }
+  };
+
+  // Human-readable active tab labels
+  const getTabLabel = (tab) => {
+    switch (tab) {
+      case 'crm': return 'Leads CRM';
+      case 'header': return 'Navbar & Ticker';
+      case 'contact': return 'Contact & Forms';
+      case 'footer': return 'Footer & Legal';
+      case 'hero': return 'Hero & Slogans';
+      case 'stats': return 'Stats & Impact';
+      case 'calculator': return 'ROI Calculator';
+      case 'services': return 'Services EPC';
+      case 'suryaghar': return 'PM Surya Ghar Matrix';
+      case 'projects': return 'Projects & Plants';
+      case 'whyus': return 'Why Us & Blueprint';
+      case 'brands': return 'Brand Partners';
+      case 'media': return 'Photos & Videos';
+      case 'testimonials': return 'Testimonials';
+      case 'whatsapp': return 'Floating WhatsApp';
+      case 'settings': return 'Backup & Security';
+      default: return 'Module Editor';
+    }
+  };
+
   // Handle Passcode Unlock
   const handleUnlock = (e) => {
     e.preventDefault();
@@ -577,6 +607,7 @@ export default function AdminModal() {
               <div className={styles.adminLayout}>
                 {/* Left Tabs Sidebar */}
                 <div className={styles.adminSidebar}>
+                  <div className={styles.sidebarCategory}>Overview &amp; Inquiries</div>
                   <button
                     type="button"
                     className={`${styles.tabBtn} ${activeTab === 'crm' ? styles.tabBtnActive : ''}`}
@@ -587,6 +618,7 @@ export default function AdminModal() {
                     <span className={styles.tabBadge}>{draftData.leads?.length || 0}</span>
                   </button>
 
+                  <div className={styles.sidebarCategory}>Global Structure</div>
                   <button
                     type="button"
                     className={`${styles.tabBtn} ${activeTab === 'header' ? styles.tabBtnActive : ''}`}
@@ -605,6 +637,16 @@ export default function AdminModal() {
                     <span>Contact &amp; Forms</span>
                   </button>
 
+                  <button
+                    type="button"
+                    className={`${styles.tabBtn} ${activeTab === 'footer' ? styles.tabBtnActive : ''}`}
+                    onClick={() => setActiveTab('footer')}
+                  >
+                    <RiLayoutBottomLine size={18} />
+                    <span>Footer &amp; Legal</span>
+                  </button>
+
+                  <div className={styles.sidebarCategory}>Core Content</div>
                   <button
                     type="button"
                     className={`${styles.tabBtn} ${activeTab === 'hero' ? styles.tabBtnActive : ''}`}
@@ -634,6 +676,33 @@ export default function AdminModal() {
 
                   <button
                     type="button"
+                    className={`${styles.tabBtn} ${activeTab === 'services' ? styles.tabBtnActive : ''}`}
+                    onClick={() => setActiveTab('services')}
+                  >
+                    <RiToolsLine size={18} />
+                    <span>Services EPC</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    className={`${styles.tabBtn} ${activeTab === 'suryaghar' ? styles.tabBtnActive : ''}`}
+                    onClick={() => setActiveTab('suryaghar')}
+                  >
+                    <RiGovernmentLine size={18} />
+                    <span>PM Surya Ghar Matrix</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    className={`${styles.tabBtn} ${activeTab === 'projects' ? styles.tabBtnActive : ''}`}
+                    onClick={() => setActiveTab('projects')}
+                  >
+                    <RiFolderVideoLine size={18} />
+                    <span>Projects &amp; Plants</span>
+                  </button>
+
+                  <button
+                    type="button"
                     className={`${styles.tabBtn} ${activeTab === 'whyus' ? styles.tabBtnActive : ''}`}
                     onClick={() => setActiveTab('whyus')}
                   >
@@ -650,33 +719,7 @@ export default function AdminModal() {
                     <span>Brand Partners</span>
                   </button>
 
-                  <button
-                    type="button"
-                    className={`${styles.tabBtn} ${activeTab === 'suryaghar' ? styles.tabBtnActive : ''}`}
-                    onClick={() => setActiveTab('suryaghar')}
-                  >
-                    <RiGovernmentLine size={18} />
-                    <span>PM Surya Ghar Matrix</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    className={`${styles.tabBtn} ${activeTab === 'services' ? styles.tabBtnActive : ''}`}
-                    onClick={() => setActiveTab('services')}
-                  >
-                    <RiToolsLine size={18} />
-                    <span>Services CMS</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    className={`${styles.tabBtn} ${activeTab === 'projects' ? styles.tabBtnActive : ''}`}
-                    onClick={() => setActiveTab('projects')}
-                  >
-                    <RiFolderVideoLine size={18} />
-                    <span>Projects &amp; Plants</span>
-                  </button>
-
+                  <div className={styles.sidebarCategory}>Media &amp; Proof</div>
                   <button
                     type="button"
                     className={`${styles.tabBtn} ${activeTab === 'media' ? styles.tabBtnActive : ''}`}
@@ -697,15 +740,6 @@ export default function AdminModal() {
 
                   <button
                     type="button"
-                    className={`${styles.tabBtn} ${activeTab === 'footer' ? styles.tabBtnActive : ''}`}
-                    onClick={() => setActiveTab('footer')}
-                  >
-                    <RiLayoutBottomLine size={18} />
-                    <span>Footer &amp; Legal</span>
-                  </button>
-
-                  <button
-                    type="button"
                     className={`${styles.tabBtn} ${activeTab === 'whatsapp' ? styles.tabBtnActive : ''}`}
                     onClick={() => setActiveTab('whatsapp')}
                   >
@@ -713,6 +747,7 @@ export default function AdminModal() {
                     <span>Floating WhatsApp</span>
                   </button>
 
+                  <div className={styles.sidebarCategory}>System &amp; Security</div>
                   <button
                     type="button"
                     className={`${styles.tabBtn} ${activeTab === 'settings' ? styles.tabBtnActive : ''}`}
@@ -2354,6 +2389,36 @@ export default function AdminModal() {
                       </div>
                     </div>
                   )}
+
+                  {/* Sticky Bottom Save Action Bar */}
+                  <div className={styles.bottomSaveBar}>
+                    <div className={styles.bottomSaveInfo}>
+                      <span className={styles.activeTabTag}>{getTabLabel(activeTab)}</span>
+                      <span className={styles.activeTabHint}>
+                        Editing in draft mode. Click 'Save All Changes' to apply updates across the site.
+                      </span>
+                    </div>
+                    <div className={styles.bottomSaveActions}>
+                      <button
+                        type="button"
+                        className={styles.discardBtn}
+                        onClick={handleDiscardChanges}
+                        title="Revert draft back to current saved state"
+                      >
+                        <RiRestartLine size={15} />
+                        <span>Discard Changes</span>
+                      </button>
+                      <button
+                        type="button"
+                        className={styles.saveChangesBtn}
+                        onClick={handleSaveAll}
+                        title="Save all draft changes to live site"
+                      >
+                        <RiSaveLine size={16} />
+                        <span>Save All Changes</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>

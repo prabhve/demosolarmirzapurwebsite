@@ -1,6 +1,7 @@
 /* ==========================================================================
-   AdminModal.module.css — True Full-Screen Executive CMS Admin Studio
-   Maa Vindhyavasini Enterprises Solar — Content & Media Management
+   AdminModal.module.css — Centralized Executive Admin Dashboard
+   Maa Vindhyavasini Enterprises Solar EPC — Content & Data Management
+   Driven by globals.css Design System Variables
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -12,9 +13,9 @@
   width: 100vw;
   height: 100vh;
   height: 100dvh;
-  background: rgba(10, 17, 40, 0.82);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(10, 17, 40, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   z-index: 99998;
   display: flex;
   align-items: center;
@@ -24,13 +25,13 @@
 }
 
 .passcodeCard {
-  background: #FFFFFF;
-  border-radius: 16px;
+  background: var(--white);
+  border-radius: var(--radius);
   width: 100%;
   max-width: 440px;
   padding: clamp(24px, 5vw, 36px);
-  box-shadow: 0 25px 60px -12px rgba(10, 17, 40, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: var(--shadow-luxury), 0 0 0 1px var(--hairline-dark);
+  border: 1px solid var(--hairline);
   text-align: center;
   position: relative;
   box-sizing: border-box;
@@ -40,50 +41,51 @@
   position: absolute;
   top: 14px;
   right: 14px;
-  background: #F1F5F9;
-  border: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  background: var(--section-alt);
+  border: 1px solid var(--hairline);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #64748B;
+  color: var(--muted-slate);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .passcodeCloseBtn:hover {
   background: #E2E8F0;
-  color: #0F172A;
+  color: var(--dark-2);
 }
 
 .lockIconWrapper {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-md);
   background: #FFF7ED;
-  color: #EA580C;
+  color: var(--primary);
   border: 1.5px solid #FFEDD5;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 16px;
-  box-shadow: 0 8px 18px rgba(234, 88, 12, 0.15);
+  box-shadow: 0 8px 20px rgba(234, 88, 12, 0.18);
 }
 
 .passcodeTitle {
-  font-family: var(--font-heading, 'Outfit', sans-serif);
-  font-size: 1.3rem;
+  font-family: var(--font-heading);
+  font-size: 1.32rem;
   font-weight: 700;
-  color: #0F172A;
+  color: var(--dark-2);
   margin-bottom: 6px;
   letter-spacing: -0.01em;
 }
 
 .passcodeSubtitle {
+  font-family: var(--font-body);
   font-size: 0.85rem;
-  color: #64748B;
+  color: var(--muted-slate);
   line-height: 1.5;
   margin-bottom: 22px;
 }
@@ -96,24 +98,24 @@
 
 .pinInput {
   width: 100% !important;
-  height: 50px;
+  height: 52px;
   padding: 10px 48px 10px 16px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   border: 1.5px solid #CBD5E1;
-  background: #FFFFFF;
-  color: #0F172A;
+  background: var(--white);
+  color: var(--dark-2);
   font-size: 1.35rem !important;
   text-align: center;
   letter-spacing: 0.3em;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   outline: none;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   box-sizing: border-box;
 }
 
 .pinInput:focus {
-  border-color: #EA580C;
+  border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.18);
 }
 
@@ -125,19 +127,19 @@
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: #64748B;
+  color: var(--muted-slate);
   cursor: pointer;
   padding: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
-  transition: color 0.2s ease;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
 }
 
 .toggleVisibilityBtn:hover,
 .togglePinVisibility:hover {
-  color: #0F172A;
+  color: var(--dark-2);
 }
 
 .errorText {
@@ -155,14 +157,14 @@
 .unlockBtn {
   width: 100%;
   padding: 12px 20px;
-  background: linear-gradient(135deg, #EA580C 0%, #F59E0B 100%);
-  color: #FFFFFF;
-  font-family: var(--font-heading, 'Outfit', sans-serif);
+  background: var(--gradient-hero);
+  color: var(--white);
+  font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: 700;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
-  transition: all 0.2s ease;
+  transition: var(--transition);
   cursor: pointer;
   border: none;
   display: flex;
@@ -177,7 +179,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. True Full-Screen Executive CMS Admin Studio Modal
+   2. Full-Screen Centralized Executive Admin Dashboard Modal
    -------------------------------------------------------------------------- */
 .adminStudioModal,
 .adminBackdrop {
@@ -190,7 +192,7 @@
   width: 100vw !important;
   height: 100vh !important;
   height: 100dvh !important;
-  background: #0A1128 !important;
+  background: var(--dark) !important;
   z-index: 99999 !important;
   display: flex !important;
   flex-direction: column !important;
@@ -209,7 +211,7 @@
   display: flex !important;
   flex-direction: column !important;
   overflow: hidden !important;
-  background: #0F172A !important;
+  background: var(--dark-2) !important;
   border-radius: 0 !important;
   border: none !important;
   box-shadow: none !important;
@@ -218,11 +220,11 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. Studio Top Navigation & Action Header
+   3. Studio Top Navigation & Global Action Header
    -------------------------------------------------------------------------- */
 .adminTopBar {
-  background: #070D1E;
-  color: #FFFFFF;
+  background: var(--dark);
+  color: var(--white);
   padding: 0 24px;
   height: 64px;
   min-height: 64px;
@@ -230,7 +232,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--hairline-dark);
   flex-shrink: 0;
   gap: 16px;
   z-index: 30;
@@ -245,30 +247,31 @@
 }
 
 .adminLogoIcon {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #EA580C, #F59E0B);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-hero);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FFFFFF;
+  color: var(--white);
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
 }
 
 .adminBrandTitle,
 .adminTitleText {
-  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: var(--white);
   letter-spacing: -0.01em;
   line-height: 1.2;
 }
 
 .adminBrandSub,
 .adminSubText {
+  font-family: var(--font-body);
   font-size: 0.74rem;
   color: #94A3B8;
   font-weight: 500;
@@ -278,7 +281,7 @@
 .adminTopActions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .saveIndicator {
@@ -287,8 +290,8 @@
   gap: 6px;
   background: rgba(16, 185, 129, 0.15);
   color: #34D399;
-  padding: 5px 12px;
-  border-radius: 9999px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
   font-size: 0.78rem;
   font-weight: 600;
   border: 1px solid rgba(16, 185, 129, 0.35);
@@ -298,45 +301,45 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #EA580C 0%, #F59E0B 100%);
-  color: #FFFFFF;
+  background: var(--gradient-hero);
+  color: var(--white);
   border: none;
-  padding: 9px 18px;
-  border-radius: 8px;
-  font-family: var(--font-heading, 'Outfit', sans-serif);
-  font-size: 0.86rem;
+  padding: 9px 20px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
+  transition: var(--transition);
   white-space: nowrap;
 }
 
 .saveChangesBtn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.5);
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.55);
 }
 
 .closeAdminBtn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--hairline-dark);
   color: #F1F5F9;
   border: 1px solid rgba(255, 255, 255, 0.14);
   padding: 9px 16px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-size: 0.84rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   white-space: nowrap;
 }
 
 .closeAdminBtn:hover {
-  background: rgba(220, 38, 38, 0.2);
+  background: rgba(220, 38, 38, 0.22);
   color: #FCA5A5;
-  border-color: rgba(220, 38, 38, 0.4);
+  border-color: rgba(220, 38, 38, 0.45);
 }
 
 /* --------------------------------------------------------------------------
@@ -349,42 +352,57 @@
   height: calc(100vh - 64px);
   height: calc(100dvh - 64px);
   width: 100%;
-  background: #0B132B;
+  background: var(--dark);
 }
 
 /* Sidebar Navigation */
 .adminSidebar {
-  width: 270px;
-  min-width: 270px;
-  max-width: 270px;
-  background: #0B132B;
-  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  width: 275px;
+  min-width: 275px;
+  max-width: 275px;
+  background: #080E21;
+  border-right: 1px solid var(--hairline-dark);
   display: flex;
   flex-direction: column;
-  padding: 16px 10px;
+  padding: 16px 12px 32px;
   overflow-y: auto;
   flex-shrink: 0;
-  gap: 4px;
+  gap: 3px;
   box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.sidebarCategory {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748B;
+  padding: 14px 10px 6px;
+  margin-top: 4px;
+}
+
+.sidebarCategory:first-child {
+  margin-top: 0;
+  padding-top: 4px;
 }
 
 .tabBtn {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 11px 14px;
-  border-radius: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
   background: transparent;
   color: #94A3B8;
-  font-family: var(--font-heading, 'Outfit', sans-serif);
-  font-size: 0.88rem;
+  font-family: var(--font-heading);
+  font-size: 0.86rem;
   font-weight: 600;
   cursor: pointer;
   border: 1px solid transparent;
   text-align: left;
-  transition: all 0.18s ease;
+  transition: var(--transition);
   width: 100%;
   box-sizing: border-box;
 }
@@ -396,21 +414,21 @@
 
 .tabBtnActive {
   background: linear-gradient(90deg, rgba(234, 88, 12, 0.22) 0%, rgba(234, 88, 12, 0.06) 100%) !important;
-  color: #FFFFFF !important;
-  border-left: 3px solid #EA580C !important;
-  border-color: rgba(234, 88, 12, 0.3) !important;
+  color: var(--white) !important;
+  border-left: 3px solid var(--primary) !important;
+  border-color: rgba(234, 88, 12, 0.35) !important;
   font-weight: 700;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .tabBadge {
   margin-left: auto;
-  background: #EA580C;
-  color: #FFFFFF;
+  background: var(--primary);
+  color: var(--white);
   font-size: 0.72rem;
   font-weight: 700;
-  padding: 2px 7px;
-  border-radius: 9999px;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
   box-shadow: 0 2px 6px rgba(234, 88, 12, 0.4);
 }
 
@@ -421,11 +439,13 @@
   flex: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  background: #F8FAFC;
+  background: var(--section-alt);
   padding: clamp(20px, 3vw, 36px);
+  padding-bottom: 96px; /* Room for bottom save bar */
   box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: #CBD5E1 #F1F5F9;
+  position: relative;
 }
 
 .sectionHeaderRow {
@@ -439,18 +459,29 @@
   gap: 14px;
 }
 
+.sectionKicker {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
 .sectionTitle {
-  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-family: var(--font-heading);
   font-size: 1.35rem;
   font-weight: 700;
-  color: #0F172A;
+  color: var(--dark-2);
   margin: 0;
   letter-spacing: -0.01em;
 }
 
 .sectionSubtitle {
+  font-family: var(--font-body);
   font-size: 0.86rem;
-  color: #64748B;
+  color: var(--muted-slate);
   margin-top: 4px;
   line-height: 1.45;
 }
@@ -460,21 +491,21 @@
    -------------------------------------------------------------------------- */
 .adminCard,
 .itemCard {
-  background: #FFFFFF;
+  background: var(--white);
   border: 1px solid #E2E8F0;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 22px 24px;
   margin-bottom: 20px;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 10px rgba(15, 23, 42, 0.02);
+  box-shadow: var(--shadow-sm);
   position: relative;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   box-sizing: border-box;
 }
 
 .adminCard:hover,
 .itemCard:hover {
   border-color: #CBD5E1;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+  box-shadow: var(--shadow-card);
 }
 
 .itemCardHeader {
@@ -490,9 +521,9 @@
 
 .itemCardTitle {
   font-weight: 700;
-  color: #0F172A;
+  color: var(--dark-2);
   font-size: 0.98rem;
-  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-family: var(--font-heading);
 }
 
 .deleteItemBtn {
@@ -507,12 +538,12 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  transition: all 0.18s ease;
+  transition: var(--transition);
 }
 
 .deleteItemBtn:hover {
   background: #EF4444;
-  color: #FFFFFF;
+  color: var(--white);
   border-color: #DC2626;
 }
 
@@ -520,20 +551,20 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 16px;
-  background: #0F172A;
-  color: #FFFFFF;
-  border: 1px solid #1E293B;
-  border-radius: 8px;
+  padding: 9px 18px;
+  background: var(--dark-2);
+  color: var(--white);
+  border: 1px solid var(--dark-3);
+  border-radius: var(--radius-sm);
   font-size: 0.84rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .addItemBtn:hover {
-  background: #1E293B;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background: var(--dark-3);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Form Groups & Inputs */
@@ -556,7 +587,7 @@
 .fieldLabel {
   font-size: 0.82rem;
   font-weight: 700;
-  color: #1E293B;
+  color: var(--dark-3);
   letter-spacing: 0.01em;
   display: flex;
   align-items: center;
@@ -568,54 +599,54 @@
 .selectInput {
   width: 100% !important;
   padding: 10px 14px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   border: 1.5px solid #CBD5E1;
-  background: #FFFFFF;
-  color: #0F172A;
+  background: var(--white);
+  color: var(--dark-2);
   font-size: 0.9rem !important;
   outline: none;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   box-sizing: border-box;
-  font-family: inherit;
+  font-family: var(--font-body);
   font-weight: 500;
 }
 
 .formInput:focus,
 .textInput:focus,
 .selectInput:focus {
-  border-color: #EA580C !important;
-  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.16) !important;
 }
 
 .formInput:disabled,
 .formInput:read-only {
-  background: #F1F5F9;
-  color: #64748B;
+  background: var(--section-alt);
+  color: var(--muted-slate);
 }
 
 .formTextarea,
 .textareaInput {
   width: 100% !important;
   padding: 10px 14px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   border: 1.5px solid #CBD5E1;
-  background: #FFFFFF;
-  color: #0F172A;
+  background: var(--white);
+  color: var(--dark-2);
   font-size: 0.9rem !important;
   outline: none;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   box-sizing: border-box;
   min-height: 84px;
   resize: vertical;
-  font-family: inherit;
+  font-family: var(--font-body);
   line-height: 1.5;
   font-weight: 500;
 }
 
 .formTextarea:focus,
 .textareaInput:focus {
-  border-color: #EA580C !important;
-  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.16) !important;
 }
 
 /* Grids */
@@ -638,11 +669,11 @@
    -------------------------------------------------------------------------- */
 .adminTableWrapper {
   border: 1px solid #E2E8F0;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   overflow-x: auto;
   margin-bottom: 24px;
-  background: #FFFFFF;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
 }
 
 .adminTable {
@@ -654,7 +685,7 @@
 }
 
 .adminTh {
-  background: #F8FAFC;
+  background: var(--section-alt);
   padding: 12px 16px;
   font-size: 0.74rem;
   font-weight: 700;
@@ -667,7 +698,7 @@
 .adminTd {
   padding: 14px 16px;
   border-bottom: 1px solid #F1F5F9;
-  color: #334155;
+  color: var(--body-slate);
   font-variant-numeric: tabular-nums;
   vertical-align: middle;
 }
@@ -676,8 +707,8 @@
   display: inline-block;
   padding: 2px 8px;
   border-radius: 4px;
-  background: #ECFDF5;
-  color: #059669;
+  background: var(--success-light);
+  color: var(--success-dark);
   font-size: 0.72rem;
   font-weight: 700;
   border: 1px solid #A7F3D0;
@@ -689,9 +720,9 @@
 .mediaPreviewBox {
   width: 100%;
   height: 180px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
-  background: #0A1128;
+  background: var(--dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -706,9 +737,9 @@
 }
 
 .uploadSection {
-  background: #F8FAFC;
+  background: var(--section-alt);
   border: 1.5px dashed #CBD5E1;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 12px 14px;
   margin-top: 8px;
   display: flex;
@@ -731,26 +762,26 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 7px 14px;
-  background: #0F172A;
-  color: #FFFFFF;
+  padding: 8px 16px;
+  background: var(--dark-2);
+  color: var(--white);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   white-space: nowrap;
 }
 
 .fileUploadBtn:hover {
-  background: #1E293B;
+  background: var(--dark-3);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .uploadHelperText {
   font-size: 0.75rem;
-  color: #64748B;
+  color: var(--muted-slate);
   font-style: italic;
 }
 
@@ -773,7 +804,7 @@
 .colorPicker {
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   border: 1.5px solid #CBD5E1;
   padding: 2px;
   cursor: pointer;
@@ -787,15 +818,87 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #EA580C;
-  color: #FFFFFF;
+  background: var(--primary);
+  color: var(--white);
   font-weight: 700;
   font-size: 0.78rem;
   flex-shrink: 0;
 }
 
 /* --------------------------------------------------------------------------
-   9. Responsive Breakpoints for Tablet & Mobile
+   9. Sticky Bottom Save Bar
+   -------------------------------------------------------------------------- */
+.bottomSaveBar {
+  position: sticky;
+  bottom: 0;
+  margin-top: 32px;
+  margin-left: -36px;
+  margin-right: -36px;
+  margin-bottom: -96px;
+  padding: 16px 36px;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  z-index: 20;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.bottomSaveInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.activeTabTag {
+  background: rgba(234, 88, 12, 0.22);
+  color: var(--primary-light);
+  border: 1px solid rgba(234, 88, 12, 0.4);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.activeTabHint {
+  color: #94A3B8;
+  font-size: 0.8rem;
+}
+
+.bottomSaveActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.discardBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.discardBtn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white);
+}
+
+/* --------------------------------------------------------------------------
+   10. Responsive Breakpoints for Tablet & Mobile
    -------------------------------------------------------------------------- */
 @media (max-width: 992px) {
   .adminLayout {
@@ -809,9 +912,13 @@
     flex-direction: row;
     overflow-x: auto;
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--hairline-dark);
     padding: 10px 14px;
     gap: 8px;
+  }
+
+  .sidebarCategory {
+    display: none;
   }
 
   .tabBtn {
@@ -833,11 +940,18 @@
   .fieldsGrid3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .bottomSaveBar {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 14px 20px;
+  }
 }
 
 @media (max-width: 640px) {
   .adminContent {
     padding: 16px;
+    padding-bottom: 96px;
   }
 
   .fieldsGrid2,
@@ -853,5 +967,15 @@
   .adminTopActions .saveChangesBtn,
   .adminTopActions .closeAdminBtn {
     padding: 8px 10px;
+  }
+
+  .activeTabHint {
+    display: none;
+  }
+
+  .bottomSaveBar {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding: 12px 16px;
   }
 }

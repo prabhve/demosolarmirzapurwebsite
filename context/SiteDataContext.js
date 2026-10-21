@@ -418,7 +418,7 @@ const initialDefaultData = {
   },
 };
 
-const SiteDataContext = createContext(null);
+export const SiteDataContext = createContext(null);
 
 export function SiteDataProvider({ children }) {
   const [siteData, setSiteData] = useState(initialDefaultData);
