@@ -1,0 +1,305 @@
+.suryaSection {
+  position: relative;
+  background: var(--dark);
+  padding: clamp(60px, 9vh, 96px) 0;
+  overflow: hidden !important;
+  color: var(--white);
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.svgPatternOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: radial-gradient(#FFFFFF 1.5px, transparent 1.5px),
+    linear-gradient(to right, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+  background-size: 40px 40px, 80px 80px, 80px 80px;
+}
+
+.container {
+  width: 100% !important;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 28px);
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.contentWrapper {
+  max-width: 1040px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.badgePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: clamp(0.72rem, 2.2vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 18px;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.headline {
+  font-size: clamp(1.85rem, 5.5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+}
+
+.subheadline {
+  font-size: clamp(0.92rem, 2.5vw, 1.05rem);
+  color: #CBD5E1;
+  line-height: 1.65;
+  margin-bottom: clamp(28px, 4vh, 44px);
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 4px;
+}
+
+/* 3 Key eligibility cards */
+.eligibilityGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 2.5vw, 22px);
+  margin-bottom: clamp(28px, 5vh, 44px);
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.eligibilityCard {
+  background: #FFFFFF;
+  border-radius: var(--radius);
+  padding: clamp(18px, 4vw, 24px);
+  color: var(--dark);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.eligibilityCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+
+.cardIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #FFF7ED;
+  color: var(--primary);
+  border: 1px solid #FFEDD5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2.8vw, 1.1rem);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.cardText {
+  font-size: clamp(0.82rem, 2.2vw, 0.88rem);
+  color: #475569;
+  line-height: 1.55;
+}
+
+/* Fintech-Grade Subsidy Breakdown Table */
+.subsidyTableWrapper {
+  background: #FFFFFF;
+  border-radius: var(--radius);
+  padding: clamp(18px, 4vw, 30px);
+  color: var(--dark);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
+  margin-bottom: clamp(28px, 5vh, 44px);
+  text-align: left;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.tableHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #E2E8F0;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tableTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 3.2vw, 1.25rem);
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.tableSubtitle {
+  font-size: clamp(0.76rem, 2vw, 0.82rem);
+  color: #64748B;
+}
+
+.scrollHint {
+  display: none;
+  font-size: 0.76rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.tableResponsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  display: block;
+  box-sizing: border-box;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: clamp(0.82rem, 2.2vw, 0.9rem);
+  min-width: 580px;
+}
+
+.th {
+  text-align: left;
+  padding: 12px 14px;
+  background: #F8FAFC;
+  color: #475569;
+  font-weight: 700;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #E2E8F0;
+  white-space: nowrap;
+}
+
+.td {
+  padding: 14px;
+  border-bottom: 1px solid #F1F5F9;
+  color: #334155;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Highlight the "3 kW (Most Recommended)" row with a refined border highlight */
+.popularRow {
+  background: #FFF7ED;
+  position: relative;
+}
+
+.popularRow .td:first-child {
+  border-left: 3px solid var(--primary);
+}
+
+.popularBadge {
+  background: var(--primary);
+  color: #FFFFFF;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  margin-left: 8px;
+  display: inline-block;
+  letter-spacing: 0.02em;
+}
+
+.subsidyAmount {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: #15803D;
+  font-size: 0.96rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ctaWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 34px;
+  background: var(--gradient-hero);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: clamp(0.92rem, 2.6vw, 1.02rem);
+  font-weight: 700;
+  border-radius: 9999px;
+  box-shadow: 0 4px 18px rgba(234, 88, 12, 0.35);
+  transition: var(--transition);
+  text-decoration: none;
+  min-height: 50px;
+  box-sizing: border-box;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(234, 88, 12, 0.5);
+}
+
+@media (max-width: 900px) {
+  .eligibilityGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .scrollHint {
+    display: block;
+  }
+
+  .ctaButton {
+    width: 100% !important;
+    padding: 14px 20px;
+  }
+}

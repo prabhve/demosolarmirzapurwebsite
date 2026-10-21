@@ -1,0 +1,193 @@
+.servicesSection {
+  background-color: var(--light-bg);
+  padding: clamp(60px, 9vh, 96px) 0;
+  position: relative;
+  overflow: hidden !important;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+}
+
+.servicesContainer {
+  width: 100% !important;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 28px);
+  box-sizing: border-box;
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto clamp(32px, 5vh, 52px);
+  padding: 0 4px;
+}
+
+.sectionKicker {
+  color: var(--primary);
+  font-size: clamp(0.74rem, 2.2vw, 0.8rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.sectionTitle {
+  font-size: clamp(1.8rem, 5vw, 2.75rem);
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+}
+
+.sectionSubtitle {
+  font-size: clamp(0.92rem, 2.5vw, 1.05rem);
+  color: #475569;
+  line-height: 1.65;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 3vw, 28px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Clean white cards with subtle hairline grey borders & micro-shadow */
+.serviceCard {
+  background: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  border-radius: var(--radius);
+  padding: clamp(20px, 4vw, 30px);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.serviceCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -4px rgba(15, 23, 42, 0.08);
+  border-color: rgba(234, 88, 12, 0.3);
+}
+
+/* 48x48px rounded-xl icon badge with soft tinted background */
+.iconContainer {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #FFF7ED;
+  color: var(--primary);
+  border: 1px solid #FFEDD5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.serviceCard:hover .iconContainer {
+  background: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+}
+
+.serviceTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.12rem, 3.2vw, 1.25rem);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.serviceDescription {
+  font-size: clamp(0.86rem, 2.3vw, 0.92rem);
+  color: #475569;
+  line-height: 1.62;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+/* Bullet points: Sleek custom checkmarks with smooth spacing */
+.serviceFeatures {
+  list-style: none;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.serviceFeatureItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(0.82rem, 2.2vw, 0.86rem);
+  color: #334155;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.featureDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+}
+
+.cardCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-size: clamp(0.84rem, 2.4vw, 0.88rem);
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  transition: gap 0.2s ease, color 0.2s ease;
+  margin-top: auto;
+  min-height: 40px;
+}
+
+.cardCta:hover {
+  gap: 10px;
+  color: var(--dark);
+}
+
+@media (max-width: 992px) {
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .serviceCard {
+    padding: clamp(18px, 4vw, 24px);
+  }
+
+  .cardCta {
+    width: 100%;
+    justify-content: center;
+    background: #FFF7ED;
+    border: 1px solid #FFEDD5;
+    border-radius: var(--radius-sm);
+    padding: 10px 16px;
+  }
+}

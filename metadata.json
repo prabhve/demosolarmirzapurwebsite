@@ -1,0 +1,8 @@
+{
+  "name": "Remix Maa Vindhyavasini Enterprises - Solar EPC Mirzapur",
+  "description": "Mirzapur\u0027s No.1 Solar Panel Installation \u0026 EPC Company. Authorized dealer of Waree, Adani Solar. PM Surya Ghar Yojana subsidy assistance. Call: +91 9670215052",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

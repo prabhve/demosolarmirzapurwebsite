@@ -1,0 +1,207 @@
+.statsSection {
+  background: var(--dark);
+  padding: clamp(50px, 8vh, 84px) 0;
+  position: relative;
+  overflow: hidden !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+.statsSection::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 20%;
+  width: min(600px, 100vw);
+  height: min(600px, 100vw);
+  background: radial-gradient(circle, rgba(234, 88, 12, 0.09) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.statsContainer {
+  width: 100% !important;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 28px);
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.regionalBadgeRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: clamp(24px, 4vh, 36px);
+  width: 100%;
+}
+
+.regionalBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: clamp(0.72rem, 2.2vw, 0.78rem);
+  color: var(--secondary);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(14px, 2.5vw, 24px);
+  margin-bottom: clamp(24px, 4vh, 36px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  padding: clamp(22px, 4vw, 32px) clamp(14px, 2.5vw, 20px);
+  text-align: center;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.statCard:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(245, 158, 11, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(234, 88, 12, 0.12);
+  border: 1px solid rgba(234, 88, 12, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary);
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.statCard:hover .iconWrapper {
+  transform: scale(1.08);
+  background: var(--gradient-hero);
+  color: var(--white);
+  border-color: transparent;
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.35);
+}
+
+.statNumber {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5.5vw, 2.75rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+}
+
+.statSuffix {
+  color: var(--secondary);
+  margin-left: 2px;
+}
+
+.statLabel {
+  font-size: clamp(0.85rem, 2.4vw, 0.94rem);
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.statSublabel {
+  font-size: clamp(0.72rem, 2vw, 0.78rem);
+  color: #94A3B8;
+  line-height: 1.4;
+}
+
+/* Bottom Generation Ticker */
+.bottomMetricsBar {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #CBD5E1;
+  font-size: clamp(0.78rem, 2.2vw, 0.85rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.metricPill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.metricVal {
+  color: var(--white);
+  font-weight: 700;
+  font-family: var(--font-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 900px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .statCard {
+    padding: 18px 12px;
+  }
+
+  .bottomMetricsBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
