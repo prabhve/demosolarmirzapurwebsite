@@ -3,7 +3,7 @@
 import './globals.css';
 import { Inter, Poppins } from 'next/font/google';
 import { SiteDataProvider } from '../context/SiteDataContext';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const inter = Inter({
   subsets: ['latin'],
