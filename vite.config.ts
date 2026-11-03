@@ -39,6 +39,8 @@ export default defineConfig(() => {
       alias: {
         '@': path.resolve('.'),
         'next/font/google': path.resolve('./src/shims/next-font.js'),
+        'next/navigation.js': path.resolve('./src/shims/next-navigation.js'),
+        'next/navigation': path.resolve('./src/shims/next-navigation.js'),
       },
     },
     server: {

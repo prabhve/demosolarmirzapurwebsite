@@ -3,6 +3,7 @@
 import './globals.css';
 import { Inter, Poppins } from 'next/font/google';
 import { SiteDataProvider } from '../context/SiteDataContext';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
     <SiteDataProvider>
       <div className={`${inter.variable || ''} ${poppins.variable || ''} app-root`}>
         {children}
+        <SpeedInsights />
       </div>
     </SiteDataProvider>
   );
