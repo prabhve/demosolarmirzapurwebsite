@@ -517,7 +517,7 @@ export default function AdminModal() {
                       setEnteredPin(e.target.value);
                       if (pinError) setPinError('');
                     }}
-                    placeholder="Enter Passcode"
+                    placeholder="Enter Passcode (9670)"
                     autoFocus
                     className={styles.pinInput}
                     aria-label="Admin Passcode"
@@ -538,6 +538,20 @@ export default function AdminModal() {
                   <button type="submit" className={styles.unlockBtn}>
                     <RiLockPasswordLine size={18} />
                     <span>Unlock Studio</span>
+                  </button>
+                </div>
+
+                <div className={styles.passcodeHelperRow}>
+                  <span>Default PIN: <strong>9670</strong></span>
+                  <button
+                    type="button"
+                    className={styles.autofillBtn}
+                    onClick={() => {
+                      setEnteredPin('9670');
+                      if (pinError) setPinError('');
+                    }}
+                  >
+                    Autofill 9670
                   </button>
                 </div>
               </form>
@@ -561,11 +575,11 @@ export default function AdminModal() {
               <div className={styles.adminTopBar}>
                 <div className={styles.adminBrandGroup}>
                   <div className={styles.adminLogoIcon}>
-                    <RiShieldKeyholeLine size={20} />
+                    <RiShieldKeyholeLine size={18} />
                   </div>
                   <div>
-                    <div className={styles.adminBrandTitle}>MVE Executive Admin Studio</div>
-                    <div className={styles.adminBrandSub}>Complete Content &amp; Media Management System</div>
+                    <div className={styles.adminBrandTitle}>MVE Admin Studio</div>
+                    <div className={styles.adminBrandSub}>Content &amp; Inquiries Management</div>
                   </div>
                 </div>
 
@@ -577,8 +591,8 @@ export default function AdminModal() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0 }}
                     >
-                      <RiCheckLine size={14} />
-                      <span>Changes Saved Live!</span>
+                      <RiCheckLine size={13} />
+                      <span>Saved!</span>
                     </motion.span>
                   )}
 
@@ -586,20 +600,63 @@ export default function AdminModal() {
                     type="button"
                     className={styles.saveChangesBtn}
                     onClick={handleSaveAll}
-                    style={{ padding: '8px 18px', fontSize: '0.84rem' }}
+                    title="Save all changes live"
                   >
                     <RiSaveLine size={16} />
-                    <span>Save All Changes</span>
+                    <span>Save</span>
                   </button>
 
                   <button
                     type="button"
                     className={styles.closeAdminBtn}
                     onClick={() => setIsAdminOpen(false)}
+                    title="Exit Admin Studio"
                   >
                     <RiCloseLine size={18} />
-                    <span>Exit Admin</span>
+                    <span>Exit</span>
                   </button>
+                </div>
+              </div>
+
+              {/* Mobile Module Quick Dropdown Switcher */}
+              <div className={styles.mobileNavContainer}>
+                <div className={styles.mobileNavHeader}>
+                  <span className={styles.mobileNavLabel}>ACTIVE MODULE:</span>
+                  <div className={styles.mobileSelectWrapper}>
+                    <select
+                      value={activeTab}
+                      onChange={(e) => setActiveTab(e.target.value)}
+                      className={styles.mobileSelectDropdown}
+                      aria-label="Select Content Module"
+                    >
+                      <optgroup label="Overview &amp; Inquiries">
+                        <option value="crm">Leads CRM ({draftData.leads?.length || 0})</option>
+                      </optgroup>
+                      <optgroup label="Global Structure">
+                        <option value="header">Navbar &amp; Ticker</option>
+                        <option value="contact">Contact &amp; Forms</option>
+                        <option value="footer">Footer &amp; Legal</option>
+                      </optgroup>
+                      <optgroup label="Core Content">
+                        <option value="hero">Hero &amp; Slogans</option>
+                        <option value="stats">Stats &amp; Impact</option>
+                        <option value="calculator">ROI Calculator</option>
+                        <option value="services">Services EPC</option>
+                        <option value="suryaghar">PM Surya Ghar Matrix</option>
+                        <option value="projects">Projects &amp; Plants</option>
+                        <option value="whyus">Why Us &amp; Blueprint</option>
+                        <option value="brands">Brand Partners</option>
+                      </optgroup>
+                      <optgroup label="Media &amp; Proof">
+                        <option value="media">Photos &amp; Videos</option>
+                        <option value="testimonials">Testimonials</option>
+                        <option value="whatsapp">Floating WhatsApp</option>
+                      </optgroup>
+                      <optgroup label="System &amp; Security">
+                        <option value="settings">Backup &amp; Security</option>
+                      </optgroup>
+                    </select>
+                  </div>
                 </div>
               </div>
 
@@ -773,105 +830,161 @@ export default function AdminModal() {
                       </div>
 
                       {draftData.leads && draftData.leads.length > 0 ? (
-                        <div className={styles.adminTableWrapper}>
-                          <table className={styles.adminTable}>
-                            <thead>
-                              <tr>
-                                <th className={styles.adminTh}>Date &amp; ID</th>
-                                <th className={styles.adminTh}>Client Name</th>
-                                <th className={styles.adminTh}>Phone Number</th>
-                                <th className={styles.adminTh}>City / Area</th>
-                                <th className={styles.adminTh}>System Requirement</th>
-                                <th className={styles.adminTh}>Message</th>
-                                <th className={styles.adminTh}>Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {draftData.leads.map((lead, idx) => (
-                                <tr key={lead.id || idx}>
-                                  <td className={styles.adminTd}>
-                                    <span className={styles.leadBadge}>{lead.id}</span>
-                                    <div style={{ fontSize: '0.74rem', color: '#64748B', marginTop: 4 }}>
-                                      {lead.date}
-                                    </div>
-                                  </td>
-                                  <td className={styles.adminTd}>
-                                    <strong>{lead.name}</strong>
-                                  </td>
-                                  <td className={styles.adminTd}>
-                                    <a
-                                      href={`tel:${lead.phone.replace(/[^0-9+]/g, '')}`}
-                                      style={{
-                                        color: 'var(--primary)',
-                                        fontWeight: 600,
-                                        display: 'inline-flex',
-                                        alignItems: 'center',
-                                        gap: 4,
-                                      }}
-                                    >
-                                      <RiPhoneLine size={14} />
-                                      {lead.phone}
-                                    </a>
-                                  </td>
-                                  <td className={styles.adminTd}>{lead.city || 'Mirzapur'}</td>
-                                  <td className={styles.adminTd}>
-                                    <span
-                                      style={{
-                                        background: '#FFF7ED',
-                                        color: 'var(--primary)',
-                                        padding: '2px 8px',
-                                        borderRadius: 4,
-                                        fontWeight: 600,
-                                        fontSize: '0.78rem',
-                                      }}
-                                    >
-                                      {lead.systemSize}
-                                    </span>
-                                  </td>
-                                  <td className={styles.adminTd} style={{ maxWidth: 220, fontSize: '0.8rem' }}>
-                                    {lead.message || 'Standard rooftop quote'}
-                                  </td>
-                                  <td className={styles.adminTd}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                        <>
+                          {/* Desktop Table View */}
+                          <div className={styles.adminTableWrapper}>
+                            <table className={styles.adminTable}>
+                              <thead>
+                                <tr>
+                                  <th className={styles.adminTh}>Date &amp; ID</th>
+                                  <th className={styles.adminTh}>Client Name</th>
+                                  <th className={styles.adminTh}>Phone Number</th>
+                                  <th className={styles.adminTh}>City / Area</th>
+                                  <th className={styles.adminTh}>System Requirement</th>
+                                  <th className={styles.adminTh}>Message</th>
+                                  <th className={styles.adminTh}>Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {draftData.leads.map((lead, idx) => (
+                                  <tr key={lead.id || idx}>
+                                    <td className={styles.adminTd}>
+                                      <span className={styles.leadBadge}>{lead.id}</span>
+                                      <div style={{ fontSize: '0.74rem', color: '#64748B', marginTop: 4 }}>
+                                        {lead.date}
+                                      </div>
+                                    </td>
+                                    <td className={styles.adminTd}>
+                                      <strong>{lead.name}</strong>
+                                    </td>
+                                    <td className={styles.adminTd}>
                                       <a
-                                        href={`https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(
-                                          lead.name
-                                        )},%20this%20is%20Maa%20Vindhyavasini%20Enterprises%20regarding%20your%20solar%20rooftop%20inquiry.`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                        href={`tel:${lead.phone.replace(/[^0-9+]/g, '')}`}
                                         style={{
+                                          color: 'var(--primary)',
+                                          fontWeight: 600,
                                           display: 'inline-flex',
                                           alignItems: 'center',
                                           gap: 4,
-                                          background: '#25D366',
-                                          color: '#FFFFFF',
-                                          padding: '5px 10px',
-                                          borderRadius: 6,
-                                          fontSize: '0.76rem',
-                                          fontWeight: 700,
-                                          textDecoration: 'none',
                                         }}
                                       >
-                                        <RiWhatsappLine size={14} />
-                                        <span>WhatsApp</span>
+                                        <RiPhoneLine size={14} />
+                                        {lead.phone}
                                       </a>
-                                      <button
-                                        type="button"
-                                        className={styles.deleteItemBtn}
-                                        style={{ padding: '5px 8px', fontSize: '0.76rem' }}
-                                        onClick={() => handleDeleteLead(idx)}
-                                        title="Delete Lead"
-                                        aria-label="Delete Lead"
+                                    </td>
+                                    <td className={styles.adminTd}>{lead.city || 'Mirzapur'}</td>
+                                    <td className={styles.adminTd}>
+                                      <span
+                                        style={{
+                                          background: '#FFF7ED',
+                                          color: 'var(--primary)',
+                                          padding: '2px 8px',
+                                          borderRadius: 4,
+                                          fontWeight: 600,
+                                          fontSize: '0.78rem',
+                                        }}
                                       >
-                                        <RiDeleteBinLine size={13} />
-                                      </button>
+                                        {lead.systemSize}
+                                      </span>
+                                    </td>
+                                    <td className={styles.adminTd} style={{ maxWidth: 220, fontSize: '0.8rem' }}>
+                                      {lead.message || 'Standard rooftop quote'}
+                                    </td>
+                                    <td className={styles.adminTd}>
+                                      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                                        <a
+                                          href={`https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(
+                                            lead.name
+                                          )},%20this%20is%20Maa%20Vindhyavasini%20Enterprises%20regarding%20your%20solar%20rooftop%20inquiry.`}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          style={{
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            gap: 4,
+                                            background: '#25D366',
+                                            color: '#FFFFFF',
+                                            padding: '5px 10px',
+                                            borderRadius: 6,
+                                            fontSize: '0.76rem',
+                                            fontWeight: 700,
+                                            textDecoration: 'none',
+                                          }}
+                                        >
+                                          <RiWhatsappLine size={14} />
+                                          <span>WhatsApp</span>
+                                        </a>
+                                        <button
+                                          type="button"
+                                          className={styles.deleteItemBtn}
+                                          style={{ padding: '5px 8px', fontSize: '0.76rem' }}
+                                          onClick={() => handleDeleteLead(idx)}
+                                          title="Delete Lead"
+                                          aria-label="Delete Lead"
+                                        >
+                                          <RiDeleteBinLine size={13} />
+                                        </button>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+
+                          {/* Mobile Cards View */}
+                          <div className={styles.mobileLeadsContainer}>
+                            {draftData.leads.map((lead, idx) => (
+                              <div key={lead.id || idx} className={styles.mobileLeadCard}>
+                                <div className={styles.mobileLeadHeader}>
+                                  <span className={styles.leadBadge}>{lead.id}</span>
+                                  <span className={styles.mobileLeadDate}>{lead.date}</span>
+                                </div>
+                                <div className={styles.mobileLeadBody}>
+                                  <div className={styles.mobileLeadName}>{lead.name}</div>
+                                  <div className={styles.mobileLeadMeta}>
+                                    <span className={styles.mobileLeadTag}>{lead.systemSize || 'Solar Plant'}</span>
+                                    <span className={styles.mobileLeadCity}>📍 {lead.city || 'Mirzapur'}</span>
+                                  </div>
+                                  {lead.message && (
+                                    <div className={styles.mobileLeadMessage}>
+                                      "{lead.message}"
                                     </div>
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
+                                  )}
+                                </div>
+                                <div className={styles.mobileLeadActions}>
+                                  <a
+                                    href={`tel:${lead.phone.replace(/[^0-9+]/g, '')}`}
+                                    className={styles.mobileCallBtn}
+                                  >
+                                    <RiPhoneLine size={15} />
+                                    <span>Call</span>
+                                  </a>
+                                  <a
+                                    href={`https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(
+                                      lead.name
+                                    )},%20this%20is%20Maa%20Vindhyavasini%20Enterprises%20regarding%20your%20solar%20rooftop%20inquiry.`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.mobileWhatsAppBtn}
+                                  >
+                                    <RiWhatsappLine size={15} />
+                                    <span>WhatsApp</span>
+                                  </a>
+                                  <button
+                                    type="button"
+                                    className={styles.mobileDeleteBtn}
+                                    onClick={() => handleDeleteLead(idx)}
+                                    title="Delete Lead"
+                                    aria-label="Delete Lead"
+                                  >
+                                    <RiDeleteBinLine size={15} />
+                                  </button>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </>
                       ) : (
                         <div
                           style={{
@@ -2395,7 +2508,7 @@ export default function AdminModal() {
                     <div className={styles.bottomSaveInfo}>
                       <span className={styles.activeTabTag}>{getTabLabel(activeTab)}</span>
                       <span className={styles.activeTabHint}>
-                        Editing in draft mode. Click 'Save All Changes' to apply updates across the site.
+                        Draft mode • Save to apply live
                       </span>
                     </div>
                     <div className={styles.bottomSaveActions}>
@@ -2406,7 +2519,7 @@ export default function AdminModal() {
                         title="Revert draft back to current saved state"
                       >
                         <RiRestartLine size={15} />
-                        <span>Discard Changes</span>
+                        <span>Discard</span>
                       </button>
                       <button
                         type="button"
@@ -2415,7 +2528,7 @@ export default function AdminModal() {
                         title="Save all draft changes to live site"
                       >
                         <RiSaveLine size={16} />
-                        <span>Save All Changes</span>
+                        <span>Save Changes</span>
                       </button>
                     </div>
                   </div>

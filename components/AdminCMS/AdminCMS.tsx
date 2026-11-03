@@ -30,6 +30,7 @@ import {
   RiCheckboxCircleLine,
   RiFileDownloadLine,
   RiFileUploadLine,
+  RiPhoneLine,
 } from 'react-icons/ri';
 import { SiteDataContext } from '../../context/SiteDataContext';
 import styles from '../AdminModal/AdminModal.module.css';
@@ -403,7 +404,7 @@ export default function AdminCMS({
                     setPasscode(e.target.value);
                     if (passcodeError) setPasscodeError('');
                   }}
-                  placeholder="Enter Passcode"
+                  placeholder="Enter Passcode (9670)"
                   autoFocus
                   className={styles.pinInput}
                   aria-label="Admin Passcode"
@@ -426,6 +427,20 @@ export default function AdminCMS({
                   <span>Unlock Admin Dashboard</span>
                 </button>
               </div>
+
+              <div className={styles.passcodeHelperRow}>
+                <span>Default PIN: <strong>9670</strong></span>
+                <button
+                  type="button"
+                  className={styles.autofillBtn}
+                  onClick={() => {
+                    setPasscode('9670');
+                    if (passcodeError) setPasscodeError('');
+                  }}
+                >
+                  Autofill 9670
+                </button>
+              </div>
             </form>
           </motion.div>
         </div>
@@ -445,12 +460,12 @@ export default function AdminCMS({
             <div className={styles.adminTopBar}>
               <div className={styles.adminBrandGroup}>
                 <div className={styles.adminLogoIcon}>
-                  <RiShieldKeyholeLine size={20} />
+                  <RiShieldKeyholeLine size={18} />
                 </div>
                 <div>
-                  <div className={styles.adminBrandTitle}>MVE Executive Admin Dashboard</div>
+                  <div className={styles.adminBrandTitle}>MVE Admin Studio</div>
                   <div className={styles.adminBrandSub}>
-                    Centralized Content Management &amp; Live Site Control
+                    Centralized Content &amp; Inquiries Management
                   </div>
                 </div>
               </div>
@@ -463,8 +478,8 @@ export default function AdminCMS({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
                   >
-                    <RiCheckLine size={14} />
-                    <span>Changes Saved Live!</span>
+                    <RiCheckLine size={13} />
+                    <span>Saved!</span>
                   </motion.span>
                 )}
 
@@ -475,7 +490,7 @@ export default function AdminCMS({
                   title="Apply and save all changes to live site"
                 >
                   <RiSaveLine size={16} />
-                  <span>Save All Changes</span>
+                  <span>Save</span>
                 </button>
 
                 <button
@@ -488,8 +503,46 @@ export default function AdminCMS({
                   title="Exit dashboard"
                 >
                   <RiCloseLine size={18} />
-                  <span>Exit Admin</span>
+                  <span>Exit</span>
                 </button>
+              </div>
+            </div>
+
+            {/* Mobile Module Quick Dropdown Switcher */}
+            <div className={styles.mobileNavContainer}>
+              <div className={styles.mobileNavHeader}>
+                <span className={styles.mobileNavLabel}>ACTIVE MODULE:</span>
+                <div className={styles.mobileSelectWrapper}>
+                  <select
+                    value={activeTab}
+                    onChange={(e) => setActiveTab(e.target.value)}
+                    className={styles.mobileSelectDropdown}
+                    aria-label="Select Content Module"
+                  >
+                    <optgroup label="Overview &amp; Inquiries">
+                      <option value="crm">Leads CRM ({draftData.leads?.length || 0})</option>
+                    </optgroup>
+                    <optgroup label="Global Structure">
+                      <option value="header">Navbar &amp; Ticker</option>
+                      <option value="contact">Contact &amp; Forms</option>
+                      <option value="footer">Footer &amp; Legal</option>
+                    </optgroup>
+                    <optgroup label="Core Content">
+                      <option value="hero">Hero &amp; Slogans</option>
+                      <option value="services">Services EPC</option>
+                      <option value="stats">Stats &amp; Impact</option>
+                      <option value="calculator">ROI Calculator</option>
+                      <option value="whyus">Why Us &amp; Blueprint</option>
+                      <option value="brands">Brand Partners</option>
+                    </optgroup>
+                    <optgroup label="Engagement">
+                      <option value="whatsapp">Floating WhatsApp</option>
+                    </optgroup>
+                    <optgroup label="System &amp; Security">
+                      <option value="settings">Backup &amp; Security</option>
+                    </optgroup>
+                  </select>
+                </div>
               </div>
             </div>
 
@@ -1317,59 +1370,119 @@ export default function AdminCMS({
                     </div>
 
                     {draftData.leads && draftData.leads.length > 0 ? (
-                      <div className={styles.adminTableWrapper}>
-                        <table className={styles.adminTable}>
-                          <thead>
-                            <tr>
-                              <th className={styles.adminTh}>Date &amp; Time</th>
-                              <th className={styles.adminTh}>Customer</th>
-                              <th className={styles.adminTh}>Phone</th>
-                              <th className={styles.adminTh}>Location / Category</th>
-                              <th className={styles.adminTh}>Bill / Capacity</th>
-                              <th className={styles.adminTh}>Actions</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {draftData.leads.map((lead: any, i: number) => (
-                              <tr key={i}>
-                                <td className={styles.adminTd}>
-                                  <span style={{ fontSize: '0.8rem', color: '#64748B' }}>
-                                    {lead.submittedAt || 'Recent'}
-                                  </span>
-                                </td>
-                                <td className={styles.adminTd}>
-                                  <strong>{lead.name}</strong>
-                                </td>
-                                <td className={styles.adminTd}>
-                                  <a href={`tel:${lead.phone}`} style={{ color: 'var(--primary)', fontWeight: 600 }}>
-                                    {lead.phone}
-                                  </a>
-                                </td>
-                                <td className={styles.adminTd}>{lead.location || lead.category || 'Mirzapur'}</td>
-                                <td className={styles.adminTd}>
-                                  <span className={styles.leadBadge}>
-                                    {lead.bill ? `₹${lead.bill}/mo` : lead.capacity || 'Inquiry'}
-                                  </span>
-                                </td>
-                                <td className={styles.adminTd}>
-                                  <button
-                                    type="button"
-                                    className={styles.deleteItemBtn}
-                                    onClick={() => {
-                                      if (window.confirm('Delete lead?')) {
-                                        const updated = draftData.leads.filter((_: any, idx: number) => idx !== i);
-                                        setDraftData({ ...draftData, leads: updated });
-                                      }
-                                    }}
-                                  >
-                                    <RiDeleteBinLine size={13} /> Delete
-                                  </button>
-                                </td>
+                      <>
+                        <div className={styles.adminTableWrapper}>
+                          <table className={styles.adminTable}>
+                            <thead>
+                              <tr>
+                                <th className={styles.adminTh}>Date &amp; Time</th>
+                                <th className={styles.adminTh}>Customer</th>
+                                <th className={styles.adminTh}>Phone</th>
+                                <th className={styles.adminTh}>Location / Category</th>
+                                <th className={styles.adminTh}>Bill / Capacity</th>
+                                <th className={styles.adminTh}>Actions</th>
                               </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
+                            </thead>
+                            <tbody>
+                              {draftData.leads.map((lead: any, i: number) => (
+                                <tr key={i}>
+                                  <td className={styles.adminTd}>
+                                    <span style={{ fontSize: '0.8rem', color: '#64748B' }}>
+                                      {lead.submittedAt || lead.date || 'Recent'}
+                                    </span>
+                                  </td>
+                                  <td className={styles.adminTd}>
+                                    <strong>{lead.name}</strong>
+                                  </td>
+                                  <td className={styles.adminTd}>
+                                    <a href={`tel:${lead.phone}`} style={{ color: 'var(--primary)', fontWeight: 600 }}>
+                                      {lead.phone}
+                                    </a>
+                                  </td>
+                                  <td className={styles.adminTd}>{lead.location || lead.city || lead.category || 'Mirzapur'}</td>
+                                  <td className={styles.adminTd}>
+                                    <span className={styles.leadBadge}>
+                                      {lead.bill ? `₹${lead.bill}/mo` : lead.capacity || lead.systemSize || 'Inquiry'}
+                                    </span>
+                                  </td>
+                                  <td className={styles.adminTd}>
+                                    <button
+                                      type="button"
+                                      className={styles.deleteItemBtn}
+                                      onClick={() => {
+                                        if (window.confirm('Delete lead?')) {
+                                          const updated = draftData.leads.filter((_: any, idx: number) => idx !== i);
+                                          setDraftData({ ...draftData, leads: updated });
+                                        }
+                                      }}
+                                    >
+                                      <RiDeleteBinLine size={13} /> Delete
+                                    </button>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+
+                        {/* Mobile Leads Card View */}
+                        <div className={styles.mobileLeadsContainer}>
+                          {draftData.leads.map((lead: any, idx: number) => (
+                            <div key={lead.id || idx} className={styles.mobileLeadCard}>
+                              <div className={styles.mobileLeadHeader}>
+                                <span className={styles.leadBadge}>{lead.id || `LEAD-${idx + 1}`}</span>
+                                <span className={styles.mobileLeadDate}>{lead.submittedAt || lead.date || 'Recent'}</span>
+                              </div>
+                              <div className={styles.mobileLeadBody}>
+                                <div className={styles.mobileLeadName}>{lead.name}</div>
+                                <div className={styles.mobileLeadMeta}>
+                                  <span className={styles.mobileLeadTag}>{lead.bill ? `₹${lead.bill}/mo` : lead.capacity || lead.systemSize || 'Solar Plant'}</span>
+                                  <span className={styles.mobileLeadCity}>📍 {lead.location || lead.city || 'Mirzapur'}</span>
+                                </div>
+                                {lead.message && (
+                                  <div className={styles.mobileLeadMessage}>
+                                    "{lead.message}"
+                                  </div>
+                                )}
+                              </div>
+                              <div className={styles.mobileLeadActions}>
+                                <a
+                                  href={`tel:${lead.phone?.replace(/[^0-9+]/g, '')}`}
+                                  className={styles.mobileCallBtn}
+                                >
+                                  <RiPhoneLine size={15} />
+                                  <span>Call</span>
+                                </a>
+                                <a
+                                  href={`https://wa.me/${lead.phone?.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(
+                                    lead.name
+                                  )},%20this%20is%20Maa%20Vindhyavasini%20Enterprises%20regarding%20your%20solar%20rooftop%20inquiry.`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className={styles.mobileWhatsAppBtn}
+                                >
+                                  <RiWhatsappLine size={15} />
+                                  <span>WhatsApp</span>
+                                </a>
+                                <button
+                                  type="button"
+                                  className={styles.mobileDeleteBtn}
+                                  onClick={() => {
+                                    if (window.confirm('Delete lead?')) {
+                                      const updated = draftData.leads.filter((_: any, idx2: number) => idx2 !== idx);
+                                      setDraftData({ ...draftData, leads: updated });
+                                    }
+                                  }}
+                                  title="Delete Lead"
+                                  aria-label="Delete Lead"
+                                >
+                                  <RiDeleteBinLine size={15} />
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </>
                     ) : (
                       <div className={styles.adminCard} style={{ textAlign: 'center', padding: '48px 24px' }}>
                         <div style={{ color: 'var(--muted-slate)', marginBottom: 8, fontSize: '0.92rem' }}>
@@ -1445,7 +1558,7 @@ export default function AdminCMS({
                   <div className={styles.bottomSaveInfo}>
                     <span className={styles.activeTabTag}>{getTabLabel(activeTab)}</span>
                     <span className={styles.activeTabHint}>
-                      Editing in draft mode. Click 'Save All Changes' to apply updates across the site.
+                      Draft mode • Save to apply live
                     </span>
                   </div>
                   <div className={styles.bottomSaveActions}>
@@ -1456,7 +1569,7 @@ export default function AdminCMS({
                       title="Revert draft back to current saved state"
                     >
                       <RiRestartLine size={15} />
-                      <span>Discard Changes</span>
+                      <span>Discard</span>
                     </button>
                     <button
                       type="button"
@@ -1465,7 +1578,7 @@ export default function AdminCMS({
                       title="Save all draft changes to live site"
                     >
                       <RiSaveLine size={16} />
-                      <span>Save All Changes</span>
+                      <span>Save Changes</span>
                     </button>
                   </div>
                 </div>
