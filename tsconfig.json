@@ -19,6 +19,9 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "next/navigation": [
+        "./src/shims/next-navigation.js"
       ]
     },
     "allowImportingTsExtensions": true,

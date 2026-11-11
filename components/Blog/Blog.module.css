@@ -1,0 +1,340 @@
+.blogSection {
+  background-color: #F8FAFC;
+  padding: clamp(60px, 9vh, 96px) 0;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 28px);
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(28px, 4vh, 40px);
+  padding: 0 4px;
+}
+
+.kicker {
+  color: var(--primary);
+  font-size: clamp(0.74rem, 2.2vw, 0.8rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.title {
+  font-size: clamp(1.8rem, 5vw, 2.75rem);
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+}
+
+.subtitle {
+  font-size: clamp(0.92rem, 2.5vw, 1.05rem);
+  color: #475569;
+  line-height: 1.65;
+}
+
+/* Category Filter Bar */
+.filterBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: clamp(28px, 5vh, 44px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filterBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  font-family: var(--font-heading);
+  font-size: clamp(0.82rem, 2.4vw, 0.88rem);
+  font-weight: 600;
+  border-radius: 9999px;
+  background-color: var(--white);
+  color: #475569;
+  border: 1px solid #E2E8F0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  min-height: 40px;
+}
+
+.filterBtn:hover {
+  background-color: #F1F5F9;
+  color: var(--dark);
+  border-color: #CBD5E1;
+}
+
+.activeFilterBtn {
+  background: var(--dark);
+  color: var(--white);
+  border-color: var(--dark);
+  box-shadow: 0 4px 12px rgba(10, 17, 40, 0.15);
+}
+
+.activeFilterBtn:hover {
+  background: #020617;
+  color: var(--white);
+}
+
+.filterBadgeCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+  background: rgba(148, 163, 184, 0.18);
+  color: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+}
+
+.activeFilterBtn .filterBadgeCount {
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--white);
+}
+
+/* Articles Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(20px, 3.5vw, 32px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 35px -8px rgba(15, 23, 42, 0.1);
+  border-color: rgba(234, 88, 12, 0.35);
+}
+
+.imageWrap {
+  position: relative;
+  height: clamp(200px, 32vw, 240px);
+  background: #0A1128;
+  overflow: hidden;
+  width: 100%;
+}
+
+.featuredImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .featuredImage {
+  transform: scale(1.06);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 17, 40, 0.1) 0%, rgba(10, 17, 40, 0.6) 100%);
+  pointer-events: none;
+}
+
+.topPills {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  z-index: 2;
+}
+
+.categoryPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background: rgba(10, 17, 40, 0.85);
+  backdrop-filter: blur(8px);
+  color: #FDBA74;
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.readTimeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  color: #E2E8F0;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.cardBody {
+  padding: clamp(20px, 3.5vw, 26px);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.postMetaRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: #64748B;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.postTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 3vw, 1.35rem);
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.4;
+  margin-bottom: 12px;
+  transition: color 0.2s ease;
+}
+
+.card:hover .postTitle {
+  color: var(--primary);
+}
+
+.postExcerpt {
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tagsRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.tagPill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #475569;
+  background: #F1F5F9;
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #F1F5F9;
+}
+
+.authorBrief {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.authorAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.authorName {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--dark);
+  display: block;
+}
+
+.authorRole {
+  font-size: 0.72rem;
+  color: #64748B;
+  display: block;
+}
+
+.readMoreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary);
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, gap 0.2s ease;
+}
+
+.card:hover .readMoreBtn {
+  transform: translateX(3px);
+  gap: 8px;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

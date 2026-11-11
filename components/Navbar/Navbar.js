@@ -3,10 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RiSunLine, RiWhatsappLine, RiMenu3Line, RiCloseLine, RiPhoneLine } from 'react-icons/ri';
+import { useRouter } from 'next/navigation';
 import { useSiteData } from '../../context/SiteDataContext';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -44,10 +46,21 @@ export default function Navbar() {
     { label: 'Why Us', href: '#why-us' },
     { label: 'PM Surya Ghar', href: '#surya-ghar' },
     { label: 'Projects', href: '#projects' },
+    { label: 'Articles', href: '#blog' },
     { label: 'Contact', href: '#contact' },
   ];
 
   const closeMobile = () => setMobileMenuOpen(false);
+
+  const handleNavClick = (e, href) => {
+    if (typeof window !== 'undefined' && window.location.pathname !== '/') {
+      e.preventDefault();
+      router.push('/' + href);
+      closeMobile();
+    } else {
+      closeMobile();
+    }
+  };
 
   return (
     <div className={styles.navRoot}>
@@ -76,7 +89,12 @@ export default function Navbar() {
       <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
         <div className={styles.navContainer}>
           {/* Logo */}
-          <a href="#home" className={styles.logo} aria-label="Maa Vindhyavasini Enterprises Home">
+          <a
+            href="#home"
+            className={styles.logo}
+            onClick={(e) => handleNavClick(e, '#home')}
+            aria-label="Maa Vindhyavasini Enterprises Home"
+          >
             <div className={styles.logoIconWrapper}>
               <RiSunLine size={24} />
             </div>
@@ -91,7 +109,11 @@ export default function Navbar() {
             <ul className={styles.navLinks}>
               {navItems.map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className={styles.navLink}>
+                  <a
+                    href={item.href}
+                    className={styles.navLink}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                  >
                     {item.label}
                   </a>
                 </li>
@@ -108,9 +130,8 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className={styles.quoteBtn}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              aria-label="Get Free Quote on WhatsApp"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               <RiWhatsappLine size={18} />
               <span>{header.ctaText || 'Get Free Quote'}</span>
@@ -141,7 +162,11 @@ export default function Navbar() {
               <ul className={styles.mobileNavLinks}>
                 {navItems.map((item) => (
                   <li key={item.label}>
-                    <a href={item.href} className={styles.mobileNavLink} onClick={closeMobile}>
+                    <a
+                      href={item.href}
+                      className={styles.mobileNavLink}
+                      onClick={(e) => handleNavClick(e, item.href)}
+                    >
                       {item.label}
                     </a>
                   </li>

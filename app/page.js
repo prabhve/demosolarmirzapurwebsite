@@ -9,6 +9,7 @@ import WhyUs from '../components/WhyUs/WhyUs';
 import Brands from '../components/Brands/Brands';
 import SuryaGhar from '../components/SuryaGhar/SuryaGhar';
 import Projects from '../components/Projects/Projects';
+import Blog from '../components/Blog/Blog';
 import Testimonials from '../components/Testimonials/Testimonials';
 import Contact from '../components/Contact/Contact';
 import Footer from '../components/Footer/Footer';
@@ -26,6 +27,7 @@ export default function HomePage() {
       <Brands />
       <SuryaGhar />
       <Projects />
+      <Blog />
       <Testimonials />
       <Contact />
       <Footer />
